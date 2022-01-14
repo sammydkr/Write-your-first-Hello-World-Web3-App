@@ -1,0 +1,19 @@
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.9;
+import "remix_tests.sol"; // this import is automatically injected by Remix.
+import "../contracts/HelloWorld.sol";  // Import the smart contract.
+
+contract HelloWorldTest {
+    HelloWorld instanceContract; // Define an instance of the contract
+
+//beforeEach is run before every compilation
+function beforeEach() public {
+    instanceContract = new HelloWorld(); // Create an instance of the smart contract
+  }
+
+//Checking the value of the hello() function is equal to an expected message
+  function checkSucess() public returns (bool) {
+    return Assert.equal(instanceContract.hello(), "hello world", "Wrong message");
+  }
